@@ -1,22 +1,43 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-
-
-int main() {
-
-  float peso;
-  float altura;
-  float imc;
-
-  printf("Digite seu peso: ");
-  scanf("%f", &peso);
-
-  printf("Digite sua altura: ");
-  scanf("%f", &altura);
-
-  imc = peso / (altura * altura);
-
-  printf("\nO imc de uma pessoa com peso %.2f Kg e altura %.2f m Ã© igual a %.2f", peso, altura, imc);
-
-  return 0;
+int main(){
+	
+	int cont=1;
+	int num_aleatorio;
+	srand(time(NULL));
+	
+	num_aleatorio = 1 + rand()%100;
+	int palpite;
+	printf("Insira seu palpite: \n");
+	scanf("%d", &palpite);
+	
+	while(palpite != num_aleatorio){ 
+	
+		if(palpite < 1 || palpite > 100){
+		  printf("Valor invalido, coloque um numero entre 1 e 100: \n");
+		  scanf("%d", &palpite);
+		}
+		else if(num_aleatorio > palpite){
+		  printf("Você chutou muito baixo!, Insira outro numero: \n");
+		  scanf("%d", &palpite);
+		
+		}
+		else if(num_aleatorio < palpite){
+		  printf("Você chutou muito alto!, Insira outro numero: \n");
+		  scanf("%d", &palpite);
+		}
+	
+		++cont;
+	
+	}
+	if(num_aleatorio == palpite){
+		printf("Parabéns!!! Você acertou! \n");
+		printf("Numero de tentativas para acertar: %d \n",cont);
+		
+    } 
+    	
+	return 0;
+	
 }
